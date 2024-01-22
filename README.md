@@ -1,2 +1,3 @@
 # libft_up
-extended libft
+
+From the School 42 Libft project, libft_up is my personal extended (and constantly expanding) folder full of useful functions
