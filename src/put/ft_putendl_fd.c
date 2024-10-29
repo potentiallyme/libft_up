@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 14:21:23 by lmoran            #+#    #+#             */
-/*   Updated: 2023/12/16 05:46:17 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/10 11:05:12 by nclassea          #+#    #+#             */
+/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	if (!s)
-		return ;
 	ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);
 }

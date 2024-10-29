@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isalpha_string.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 11:02:59 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
+/*   Created: 2024/03/30 15:22:05 by lmoran            #+#    #+#             */
+/*   Updated: 2024/07/19 02:11:49 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_isalpha_string(char *s)
 {
 	int	i;
 
-	if (!s || !fd)
-		return ;
 	i = 0;
+	if (s[i] == '+')
+		i++;
 	while (s[i])
 	{
-		write(fd, &s[i], 1);
+		if (!ft_isalpha(s[i]))
+			return (1);
 		i++;
 	}
+	return (0);
 }

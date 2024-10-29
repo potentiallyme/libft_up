@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   return_gnl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 11:02:59 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
+/*   Created: 2024/08/14 17:56:08 by lmoran            #+#    #+#             */
+/*   Updated: 2024/10/11 17:14:23 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+char	*return_gnl(int fd)
 {
-	int	i;
+	char	*s;
+	char	*t;
 
-	if (!s || !fd)
-		return ;
-	i = 0;
-	while (s[i])
+	t = get_next_line(fd, 0);
+	s = 0;
+	while (t)
 	{
-		write(fd, &s[i], 1);
-		i++;
+		if (!s)
+			s = ft_strdup(t);
+		else
+			s = ft_strjoin(s, t, 1);
+		free(t);
+		t = get_next_line(fd, 0);
 	}
+	free(t);
+	return (s);
 }

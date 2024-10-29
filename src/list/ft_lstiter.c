@@ -5,20 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 19:05:12 by lmoran            #+#    #+#             */
-/*   Updated: 2023/12/18 14:33:42 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/11 16:02:46 by nino              #+#    #+#             */
+/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	ft_lstiter(t_list *lst, long (*f)(long))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (!lst || !f)
-		return ;
-	while (lst)
+	t_list	*tmp;
+
+	tmp = lst;
+	while (tmp)
 	{
-		f(lst->content);
-		lst = lst->next;
+		f(tmp->content);
+		tmp = tmp->next;
 	}
 }

@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 17:09:05 by lmoran            #+#    #+#             */
-/*   Updated: 2023/12/16 05:46:06 by lmoran           ###   ########.fr       */
+/*   Created: 2024/03/29 16:06:19 by nino              #+#    #+#             */
+/*   Updated: 2024/10/15 14:15:49 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	ft_tolower(int c)
+char	*ft_strndup(const char *s, int n)
 {
-	if (c > 64 && c < 91)
-		return (c + 32);
-	return (c);
+	char	*dup;
+	int		i;
+	int		len;
+
+	if (!s)
+		return (NULL);
+	len = 0;
+	i = 0;
+	if (len < n)
+		len = n;
+	dup = malloc(sizeof * dup * (len + 1));
+	if (!dup)
+		return (NULL);
+	while (n && s[i])
+	{
+		dup[i] = s[i];
+		i++;
+		n--;
+	}
+	dup[i] = 0;
+	return (dup);
 }

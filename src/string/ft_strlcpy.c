@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 15:36:51 by lmoran            #+#    #+#             */
-/*   Updated: 2023/12/16 05:45:40 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/06 15:17:53 by nclassea          #+#    #+#             */
+/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+	size_t	srclen;
 
-	if (!size)
-		return (ft_strlen(src));
-	i = 0;
-	while (src[i] && i < size - 1)
+	srclen = ft_strlen(src);
+	if (srclen + 1 < size)
+		ft_memcpy(dst, src, srclen + 1);
+	else if (size != 0)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_memcpy(dst, src, size - 1);
+		dst[size - 1] = '\0';
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	return (srclen);
 }

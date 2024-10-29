@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lines_double.c                                  :+:      :+:    :+:   */
+/*   ft_iterate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 16:00:43 by lmoran            #+#    #+#             */
-/*   Updated: 2024/01/22 16:03:56 by lmoran           ###   ########.fr       */
+/*   Created: 2024/01/23 14:49:34 by lmoran            #+#    #+#             */
+/*   Updated: 2024/03/05 19:00:44 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	ft_lines_double(char **s)
+int	ft_iterate(char *s, int (*f)(char *, int))
 {
-	int i;
-	int lines;
-
+	int	i;
 
 	i = 0;
-	lines = 0;
-	if (!s)
-		return (0);
-	while (s[i++])
-		lines++;
-	return (lines);
+	while (s[i])
+	{
+		if (!((f)(s, i)))
+			return (0);
+		i++;
+	}
+	return (1);
 }

@@ -5,23 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 15:36:26 by lmoran            #+#    #+#             */
-/*   Updated: 2023/12/16 05:46:54 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/06 10:18:08 by nclassea          #+#    #+#             */
+/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t size)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char	*tsrc;
-	char	*tdst;
+	size_t	i;
+	char	*source;
+	char	*destination;
 
-	if (!dst && !src)
-		return (NULL);
-	tsrc = (char *)src;
-	tdst = (char *)dst;
-	while (size-- > 0)
-		*tdst++ = *tsrc++;
-	return (dst);
+	i = 0;
+	source = (char *)src;
+	destination = (char *)dest;
+	if (destination == NULL && source == NULL)
+		return (destination);
+	while (i < n)
+	{
+		destination[i] = source[i];
+		i++;
+	}
+	return (destination);
 }

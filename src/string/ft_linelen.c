@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_linelen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 11:02:59 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
+/*   Created: 2024/01/22 17:07:09 by lmoran            #+#    #+#             */
+/*   Updated: 2024/09/16 14:24:34 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_linelen(char **s)
 {
 	int	i;
 
-	if (!s || !fd)
-		return ;
 	i = 0;
 	while (s[i])
-	{
-		write(fd, &s[i], 1);
 		i++;
-	}
+	return (i);
 }

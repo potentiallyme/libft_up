@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 15:24:51 by lmoran            #+#    #+#             */
-/*   Updated: 2024/01/22 18:22:29 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/06 10:14:50 by nclassea          #+#    #+#             */
+/*   Updated: 2024/09/16 17:12:22 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	ft_strlen(const char *c)
+int	ft_strlen(const char *s)
 {
 	int	i;
 
-	if (!c)
-		return (0);
 	i = 0;
-	while (c[i])
+	if (!s)
+		return (i);
+	while (s[i])
 		i++;
 	return (i);
 }

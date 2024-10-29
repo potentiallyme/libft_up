@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_comp.c                                   :+:      :+:    :+:   */
+/*   ft_char_trim.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 17:11:16 by lmoran            #+#    #+#             */
-/*   Updated: 2024/01/22 18:17:23 by lmoran           ###   ########.fr       */
+/*   Created: 2024/03/25 18:50:18 by lmoran            #+#    #+#             */
+/*   Updated: 2024/03/25 19:02:38 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	ft_strlen_comp(char **s)
+char	*ft_char_trim(char *s, char trim)
 {
-	int i;
-	int j;
+	size_t	i;
+	size_t	cst;
+	size_t	cen;
+	char	*ret;
 
+	cst = 0;
+	if (!s)
+		return (NULL);
+	while (s[cst] && s[cst] != trim)
+		cst++;
+	if (!s[cst])
+		return (NULL);
+	cst++;
+	cen = ft_strlen(s);
+	while (cen > cst && s[cen] != trim)
+		cen--;
+	if (cen == cst)
+		return (NULL);
+	ret = ft_calloc(sizeof(*s), (cen - cst + 1));
 	i = 0;
-	j = 0;
-	while (s[i] && s[(i + 1)])
-	{
-		j = ft_strlen(s[i]);
-		i++;
-		if (j != ft_strlen(s[i]))
-			return (0);
-	}
-	return (1);
+	while (s[cst] && cst < cen)
+		ret[i++] = s[cst++];
+	ret[i] = '\0';
+	return (ret);
 }

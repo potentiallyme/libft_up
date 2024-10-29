@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 18:56:18 by lmoran            #+#    #+#             */
-/*   Updated: 2024/01/22 11:23:45 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/11 15:32:30 by nino              #+#    #+#             */
+/*   Updated: 2024/07/23 23:56:07 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*tmp;
+	t_list	*last;
 
-	if (*lst)
+	new->interro = 0;
+	if (lst)
 	{
-		tmp = ft_lstlast(*lst);
-		tmp->next = new;
+		if (*lst)
+		{
+			last = *lst;
+			while (last->next)
+				last = last->next;
+			new->prev = last;
+			new->next = NULL;
+			last->next = new;
+		}
+		else
+		{
+			new->prev = NULL;
+			*lst = new;
+		}
 	}
-	else
-		*lst = new;
 }

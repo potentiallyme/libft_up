@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strdup_double.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yu-chen <yu-chen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 11:02:59 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
+/*   Created: 2024/01/25 18:53:12 by lmoran            #+#    #+#             */
+/*   Updated: 2024/10/15 13:15:44 by yu-chen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+char	**ft_strdup_double(char **s)
 {
-	int	i;
+	int		i;
+	char	**dup;
 
-	if (!s || !fd)
-		return ;
+	i = 0;
+	while (s[i])
+		i++;
+	dup = malloc(sizeof(char *) * (i + 1));
+	if (!(dup))
+		return (0);
 	i = 0;
 	while (s[i])
 	{
-		write(fd, &s[i], 1);
+		dup[i] = ft_strdup(s[i]);
 		i++;
 	}
+	dup[i] = 0;
+	return (dup);
 }

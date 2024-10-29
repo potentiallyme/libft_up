@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 11:02:59 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
+/*   Created: 2024/07/09 15:00:33 by lmoran            #+#    #+#             */
+/*   Updated: 2024/10/15 14:19:10 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_strstr(char *s1, char *s2)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
 
-	if (!s || !fd)
-		return ;
 	i = 0;
-	while (s[i])
+	if (s2[0] == 0)
+		return (1);
+	while (s1[i])
 	{
-		write(fd, &s[i], 1);
+		j = 0;
+		while (s1[i + j] == s2[j])
+		{
+			j++;
+			if (s2[j] == '\0')
+				return (1);
+		}
 		i++;
 	}
+	return (0);
 }

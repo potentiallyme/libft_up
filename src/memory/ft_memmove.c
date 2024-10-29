@@ -5,34 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 15:36:44 by lmoran            #+#    #+#             */
-/*   Updated: 2023/12/16 05:46:49 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/06 11:54:21 by nclassea          #+#    #+#             */
+/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t size)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*tsrc;
-	char	*tdst;
 	size_t	i;
+	char	*source;
+	char	*destination;
 
-	tsrc = (char *)src;
-	tdst = (char *)dst;
-	i = 0;
-	if (!dst && !src)
-		return (dst);
-	if (tdst > tsrc)
-		while (size-- > 0)
-			tdst[size] = tsrc[size];
+	i = -1;
+	source = (char *)src;
+	destination = (char *)dest;
+	if (!destination && !source)
+		return (NULL);
+	if (destination > source)
+	{
+		while (n-- > 0)
+			destination[n] = source[n];
+	}
 	else
 	{
-		while (i < size)
-		{
-			tdst[i] = tsrc[i];
-			i++;
-		}
+		while (++i < n)
+			destination[i] = source[i];
 	}
-	return (dst);
+	return (destination);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 17:07:09 by lmoran            #+#    #+#             */
-/*   Updated: 2024/01/22 18:16:02 by lmoran           ###   ########.fr       */
+/*   Created: 2024/01/22 16:00:43 by lmoran            #+#    #+#             */
+/*   Updated: 2024/03/30 14:02:06 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 int	ft_strlen_double(char **s)
 {
-	int i;
-	int len;
+	int	i;
 
 	i = 0;
-	len = 0;
-	while (s[i++])
-		len += ft_strlen(s[i]);
-	return (len);
+	while (s[i])
+		i++;
+	return (i);
 }

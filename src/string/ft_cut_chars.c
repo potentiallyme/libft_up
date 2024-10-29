@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_cut_chars.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 11:02:59 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
+/*   Created: 2024/07/02 15:12:19 by lmoran            #+#    #+#             */
+/*   Updated: 2024/07/18 16:23:15 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+char	*ft_cut_chars(char *s, char *cut)
 {
-	int	i;
+	int		i;
+	int		j;
+	int		k;
+	int		len;
+	char	*tmp;
 
-	if (!s || !fd)
-		return ;
-	i = 0;
-	while (s[i])
+	len = ft_strlen(s) - ft_count_chars(s, cut) + 1;
+	tmp = (char *)malloc(len * sizeof(char));
+	i = -1;
+	k = 0;
+	while (tmp[++i])
 	{
-		write(fd, &s[i], 1);
-		i++;
+		j = -1;
+		while (cut[++j])
+		{
+			if (s[k] == cut[j])
+				k++;
+		}
+		tmp[i] = s[k];
+		k++;
 	}
+	tmp[i] = 0;
+	return (tmp);
 }

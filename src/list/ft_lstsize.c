@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 18:49:14 by lmoran            #+#    #+#             */
-/*   Updated: 2023/12/16 05:47:15 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/11 15:18:13 by nino              #+#    #+#             */
+/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	size_t	count;
+	t_list	*tmp;
+	int		i;
 
-	count = 0;
-	while (lst)
+	if (!lst)
+		return (0);
+	tmp = lst;
+	i = 0;
+	while (tmp)
 	{
-		lst = lst->next;
-		count++;
+		tmp = tmp->next;
+		i++;
 	}
-	return (count);
+	return (i);
 }

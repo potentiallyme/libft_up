@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isvals.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 18:03:13 by lmoran            #+#    #+#             */
-/*   Updated: 2024/01/22 19:19:10 by lmoran           ###   ########.fr       */
+/*   Created: 2024/03/30 15:28:27 by lmoran            #+#    #+#             */
+/*   Updated: 2024/03/30 17:27:38 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	ft_isvals(char *s, char *c)
+long	ft_atol(char *nptr)
 {
-	int i;
-	int j;
-	int x;
+	long	sign;
+	long	out;
 
-	i = 0;
-	x = 0;
-	while (s[i])
+	out = 0;
+	sign = 0;
+	while ((*nptr >= 9 && *nptr <= 13) || (*nptr == 32))
+		nptr++;
+	if (*nptr == '-')
 	{
-		j = 0;
-		while (c[j])
-		{
-			if (!(c[j] == s[i]))
-				x = 1;
-			else if (c[j] == s[i])
-			{
-				x = 0;
-				break ;
-			}
-			j++;
-		}
-		i++;
+		sign++;
+		nptr++;
 	}
-	if (x)
-		return (0);
-	return (1);
+	else if (*nptr == '+')
+		nptr++;
+	while (*nptr >= 48 && *nptr <= 57)
+	{
+		out *= 10;
+		out += *nptr - 48;
+		nptr++;
+	}
+	if (sign == 1)
+		out *= -1;
+	return (out);
 }

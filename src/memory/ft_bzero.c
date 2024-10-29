@@ -5,22 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoran <lmoran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 15:34:33 by lmoran            #+#    #+#             */
-/*   Updated: 2023/12/16 05:46:41 by lmoran           ###   ########.fr       */
+/*   Created: 2023/11/05 19:27:51 by nino              #+#    #+#             */
+/*   Updated: 2024/03/18 16:19:22 by lmoran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-void	ft_bzero(void *s, size_t size)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*str;
+	char	*data;
+	size_t	i;
 
-	str = (char *)s;
-	while (size)
+	data = (char *)s;
+	i = 0;
+	while (i < n)
 	{
-		*str = 0;
-		str++;
-		size--;
+		data[i] = 0;
+		i++;
 	}
 }
